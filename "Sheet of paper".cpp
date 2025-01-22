@@ -13,7 +13,7 @@ int main() {
 
   int total = 0;
 
-  for(i = 0; i < 5; i++){
+  for(int i = 0; i < 5; i++){
     total = total + array[i];
     }
   
