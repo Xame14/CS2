@@ -1,3 +1,7 @@
+#include <iostream> 
+using namespace std;
+
+int main()
 int array[5];
 array[3] = 20;
 array[1] = array[3];
