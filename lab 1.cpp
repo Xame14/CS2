@@ -55,42 +55,72 @@ int main()
     
     cout<< endl <<"Building 2 4x4 grids and put integers in them."<<endl;
     
-    int usinp;
+    int usinp;      //user input
     
-    
+    //matrix l------------------------------------------------------
+   cout<<"Please make two matricies"<<endl;
+   
     for(int r1 = 0; r1 < 4;r1++){
         
         for(int c1 = 0; c1 < 4; c1++){
             
-            cin >> usinp;
-            d2arr1[r1][c1] = usinp;
-            cin.clear();
+            cin >> usinp;                   //filling in the matrix with inputs
+            d2arr1[r1][c1] = usinp;         //r1 = row 1 and c1 = column 1
+            
+            
+        }
+        if(r1 < 3){
+            cout<<endl<<"Now for the next row"<<endl;
+        }
+    }
+    
+    //Marix 2 ---------------------------------------------------
+    
+    int user2;
+    cout<<"lets make the second matrix now."<<endl;
+    
+    for(int r2 = 0; r2 < 4;r2++){
+        
+        for(int c2 = 0; c2 < 4; c2++){
+            
+            cin >> user2;                                       //filling in matrix 2 with inputs
+            c3arr1[r2][c2] = user2;   //r2 = row 2 and c2 = column 2
+            
+            
+        }
+        if(r2 < 3){
+            cout<<endl<<"Now for the next row"<<endl;
+        }
+    }
+    
+    //matrix 3----------------------------------------------
+    
+    for(int r3 = 0; r3 < 4;r3++){
+        
+        for(int c3 = 0; c3 < 4; c3++){
+            
+            //filling in matrix 3 with sums of the arrays
+            f4arr1[r3][c3] = d2arr1[r3][c3] + c3arr1[r3][c3];        //r3 = added rows and c3 = added columns
+            
             
         }
     }
     
+    //Q4--------------------------------------------------------
     
+    cout<<"what is your name: ";
     
+    string name;                         //intialization
     
+    getline(cin,name);                   //input
     
+    int nl = name.length();
     
-    
-    
-    
-    
-    
-    
-    //string name;
-    
-    //cin >> name;
-    
-    //getline(cin, name)
-    //name.length();
-    //name.size();
-    
-    //for(--){
-    
-    //}
+    for(int u=0; u<nl; u++)             //loop to capitalize
+    {
+        name[u] = toupper(name[u]);
+    }
+    cout<<"Hello, "<< name;
     
     return 0;
 }
