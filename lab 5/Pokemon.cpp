@@ -37,12 +37,10 @@ bool Pokemon::is_multitype(){
 }
 
 string Pokemon::type2(){
-    if(types[1] != "null"){
-      return types[1];  
-    }
-    else{
-        return " ";
-    }
+    if(is_multitype())
+        return types[1];
+    else
+        return types[0];
 }
 
 float Pokemon::damage_multiplier(string attack_type){
@@ -83,10 +81,10 @@ float Pokemon::damage_multiplier(string attack_type){
             dmg = dmg * 1.0;
         }
         else if(attack_type == "Fighting"){
-            if(types[0] == "Normal"){
+            if(types[1] == "Normal"){
                 dmg = dmg * 2.0;
             }
-            else if(types[0] == "Flying" ||types[0] == "Poison"){
+            else if(types[1] == "Flying" ||types[1] == "Poison"){
                 dmg = dmg * 0.5;
             }
             else{
@@ -94,7 +92,7 @@ float Pokemon::damage_multiplier(string attack_type){
             }
         }
         else if(attack_type == "Flying"){
-            if(types[0] == "Fighting"){
+            if(types[1] == "Fighting"){
                 dmg = dmg * 2.0;
             }
             else{
@@ -102,7 +100,7 @@ float Pokemon::damage_multiplier(string attack_type){
             }
         }
         else{
-            if(types[0] == "Poison"){
+            if(types[1] == "Poison"){
             dmg = dmg * 0.5;
             }
             else{
@@ -112,13 +110,3 @@ float Pokemon::damage_multiplier(string attack_type){
     }
     return dmg;
 }
-
-    // Normal attacks: 1.0 against all Pokemon defending types.
-    // Fighting attacks: 2.0 against Normal, 0.5 against Flying or Poison, 1.0 against Fighting.
-    // Flying attacks: 1.0 against all defending types except Fighting, 2.0 against Fighting.
-    // Poison attacks: 1.0 against all types except Poison, 0.5 against Poison.
-
-//int _ndex;			// Stores the Pokemon's Ndex
-//string _name;		// Stores the Pokemon's name 
-//string types[2];	// Array's 1st element stores type 1. When there is a second type, array's 2nd element stores type 2
-//int type_count;
