@@ -1,22 +1,23 @@
-#include <iostream> 
+#include <iostream>
+#include <fstream>
 using namespace std;
 
+
 int main() {
-  int array[5];
-  array[3] = 20;
-  array[1] = array[3];
-  array[4] = array[3];
-  array[0] = 15;
-
-  cout<<"Please enter an integer for index 2:  ";
-  cin>>array[2];
-
-  int total = 0;
-
-  for(int i = 0; i < 5; i++){
-    total = total + array[i];
-    }
+    ifstream fin;
+    ifstream fin2;
+    ofstream fout;
+    
+    fout.open("output.txt",ios::app);
+    
+    fin.open("input1.txt");
+    fin2.open("input2.txt");
+    
+    while(!fin.eof() || !fin2.eof())
+    
+    
+    
+    
   
-  cout<<total;
-return 0;
+  return 0;
 }
