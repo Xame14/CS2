@@ -27,8 +27,8 @@ void Dynamic::insert(int value){
         *(ar+count) = value; // ar[count] = value
     }
     else{
-        // expand / add space
-        // insert to the right
+        expand();
+        *(ar+count) = value;
     }
     count++;
 }
@@ -37,12 +37,29 @@ int Dynamic::findValue(int value){
     // finds if the value is stored. If yes, returns the index (if value exists multiple times, only return the index of first occurence)
     // if value isn't available, return -1
     
-    for(int i = 0; i < _size; i++){
-        if( value = *(ar + i)){
+    for(int i = 0; i < count; i++){
+        if( *(ar + i) == value){
             return i;
         }
         
     }
+    return -1;
+}
     
+void Dynamic::expand(){
+    // double the memory
+    _size = _size * 2;
+    // create new array and store its address in br
+    int *br = new int[_size]; // double size
     
+    // copy values of original array into new array
+    for(int i=0; i<count;i++){
+        *(br+i) = *(ar+i); // br[i] = ar[i]
+    }
+    
+    // release address of original array
+    delete[] ar;
+    
+    // copy address of its new array(br) into ar
+    ar = br;
 }
