@@ -60,3 +60,59 @@ void VariableLength::expand(){
 //}
 
 
+void Dynamic::insertAt(int index, int value){
+
+    if(count == _size){
+        expand();
+    }
+    if(index >= count || index < 0){ // to the right of existing
+        *(ar + count) = value;
+    }
+    else{
+        for(int i = count-1; i >=index;i--){ // shift values
+            *(ar+i+1) = *(ar+i);
+        }
+        *(ar + count) = value;
+    }
+    count++;
+    
+}
+
+int Dynamic::erase(){
+    if(count == 0){ // array is empty
+        return -1;
+    }
+    
+    int temp = *(ar+count-1); // rightmost
+    *(ar +count-1) = 0; // optional
+    count--;
+    return temp;
+    
+}
+
+void Dynamic::erase(int value){
+    
+    int index = findValue(value);
+    
+    while(index != -1){
+        eraseAt(index);
+        index = findValue(value);
+    }
+    
+    
+}
+
+int Dynamic::eraseAt(int index){
+    
+    if(index < 0 || index >= count){ // also checks for count == 0
+        return -1;
+    }
+    int temp = *(ar+index); // ar[index]
+    for(int i = index +1;index <= count; i++){
+        *(ar+ i - 1) = *(ar+i);
+    }
+    
+    
+    count--;
+    return temp;
+}
