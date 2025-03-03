@@ -8,6 +8,13 @@ class VariableLength{ // array but with no fixed length
     int size(); // amount of data
     int memSize(); // amount of memory
     ~VariableLength();
+    void insertAt(int index, int value);
+    int erase();
+    // erase function takes a value and deletes all occurrences of the value if the value exists in the array. Make sure to move all values on the right of the deleted value to the left so there is no empty spaces in the middle
+    // decrement count by 1
+    void erase(int value);
+    // eraseAt function takes an index and deletes the value at that index. Make sure to all values after that index to the left
+    int eraseAt(int index);
     
     private: // data members
     // int array
