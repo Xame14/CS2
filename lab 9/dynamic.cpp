@@ -68,24 +68,54 @@ void Dynamic::expand(){
 //-------------------------- NEW -----------------------------------------
 
 void Dynamic::insertAt(int index, int value){
+    
+    if(count == _size)
+        expand();
 
-    
-    
+    if(index >= count || index < 0)//to the right of existing values
+        *(ar+count) = value;
+    else // value exists at index
+    {
+        for(int i=count-1; i>=index;i--)
+            *(ar+i+1) = *(ar+i); //shift values to the right
+
+        *(ar+index) = value;
+    }
+    count++;
 }
 
 int Dynamic::erase(){
     
+    if(count == 0){ // array is empty
+        return -1;
+    }
+    
+    int temp = *(ar+count-1); // rightmost
+    *(ar +count-1) = 0; // optional
+    count--;
+    return temp;
     
 }
 
 void Dynamic::erase(int value){
     
+    int index = findValue(value);
     
-    
+    while(index != -1){
+        eraseAt(index);
+        index = findValue(value);
+    }
     
 }
 
-int Dynamic::eraseAt(int index){
+void Dynamic::eraseAt(int index){
     
-    
+    if(index < 0 || index >= count){ // also checks for count == 0
+        return;
+    }
+    int temp = *(ar+index); // ar[index]
+    for(int i = index +1;i < count; i++){
+        *(ar+ i - 1) = *(ar+i);
+    }
+    count--;
 }
