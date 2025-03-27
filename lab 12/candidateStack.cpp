@@ -16,7 +16,7 @@ void CandidateStack::push(Candidate* c){ //insert values in front of the stack
     //Case where empty
     if(head == nullptr){
         head = temp;
-         = nullptr;
+        tail = nullptr;
         count = count + 1;
     }
     else{
