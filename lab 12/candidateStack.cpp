@@ -11,7 +11,7 @@ int CandidateStack::size(){ // return the number of nodes in the stack
 }
   
 void CandidateStack::push(Candidate* c){ //insert values in front of the stack
-    Node* temp = new node();
+    Node* temp = new Node();
     temp->data = c;
     //Case where empty
     if(head == nullptr){
@@ -32,7 +32,13 @@ Candidate* CandidateStack::pop(){ //remove values from the front of the stack. I
         return nullptr;
     }
     //Case only one
-    else if()
+    else if(head->next == nullptr){  // 1 node
+        Candidate* name = head->data;
+        delete head;
+        head = nullptr;
+        count = count - 1;
+        return name;
+    }
     else{
         Candidate* name = head->data;
         head = head->next;
@@ -53,10 +59,10 @@ Candidate* CandidateStack::top(){ //return the first value in the stack. If stac
 
 void CandidateStack::candidates(){ //print all the candidates stored in the stack. You should use the display function of Candidate class to display each Candidate
     for(Node* i = head; i!= nullptr; i = i->next) // iterate over node*
-  {
-    cout << i->data->display() << " "; // i->data is of type int
-  }
-  cout << endl;
+    {
+        i->data->display(); // i->data is of type int
+    }
+    cout << endl;
 }
 
 CandidateStack::~CandidateStack(){//delete any existing memory
