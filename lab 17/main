@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+#include "selectionSort.h"
+#include "insertionSort.h"
+#include "quickSort.h"
+#include "mergeSort.h"
+
+void printArr(int ar[], int start, int end)
+{
+    if(start>end)
+    {
+        cout << endl; // print endl after no element is left
+        return;
+    }
+    cout << ar[start] << " "; // print the start element
+    printArr(ar, start+1, end); // print everything after start
+}
+int* jumbledArray()
+{
+    int* ar = new int[9]{30, 11, 27, 3, 1, 32, 9, 18, 5};
+    return ar;
+}
+
+int main()
+{
+    int* ar = jumbledArray(); // creating new array
+    cout << "Unsorted array: ";
+    printArr(ar, 0, 8); // Output: 30 11 27 3 1 32 9 18 5
+
+    selectionSort(ar, 0, 8);
+    cout << "Array after selection sort: ";
+    printArr(ar, 0, 8); // Output: 1 3 5 9 11 18 27 30 32
+    delete[] ar;// deleting it
+
+    ar = jumbledArray(); // creating a fresh array
+    cout << "Unsorted array: ";
+    printArr(ar, 0, 8); // Output: 30 11 27 3 1 32 9 18 5
+
+    insertionSort(ar, 0, 8);
+    cout << "Array after insertion sort: ";
+    printArr(ar, 0, 8); // Output: 1 3 5 9 11 18 27 30 32
+    delete[] ar;//deleting it
+
+    ar = jumbledArray();
+    cout << "Unsorted array: ";
+    printArr(ar, 0, 8); // Output: 30 11 27 3 1 32 9 18 5
+
+    quickSort(ar, 0, 8);
+    cout << "Array after quick sort: ";
+    printArr(ar, 0, 8); // Output: 1 3 5 9 11 18 27 30 32
+    delete[] ar;
+
+    ar = jumbledArray();
+    cout << "Unsorted array: ";
+    printArr(ar, 0, 8); // Output: 30 11 27 3 1 32 9 18 5
+
+    mergeSort(ar, 0, 8);
+    cout << "Array after merge sort: ";
+    printArr(ar, 0, 8); // Output: 1 3 5 9 11 18 27 30 32
+
+    delete[] ar;
+}
