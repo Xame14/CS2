@@ -1,4 +1,5 @@
 #include "bst.h"
+#include <queue>
 
 BST::BST(){
     root = nullptr;
@@ -51,7 +52,100 @@ void BST::insertR(Node* &p, int value){
     else if(p->data > value){
         insertR(p->left, value);
     }
-    else{
+    else{ // p->data <= value  (duplicates or greater then p)
         insertR(p->right, value);
     }
 }
+
+bool BST::searchR(Node* p, int value){
+    
+    if(p == nullptr){
+        return false;
+    }
+    if(p->data == value){
+        return true;
+    }
+    else if(p->data > value){
+        return searchR(p->left, value);
+    }
+    else{ // p->data >= value
+        return searchR(p->right, value);
+    }    
+}
+
+bool BST::search(int value){
+    return searchR(root, value);
+    // bool b = searchR(root, value)
+    // return b
+}
+
+void BST::inorderTraversalR(Node* p){
+   
+   if(p == nullptr){
+       return;
+   }
+   inorderTraversalR(p->left);
+   cout<< p->data << " ";
+   inorderTraversalR(p->right);
+}
+
+void BST::inorderTraversal(){
+   inorderTraversalR(root); 
+}
+
+void BST::preorderTraversalR(Node* p){
+   
+   if(p == nullptr){
+       return;
+   }
+   
+   cout<< p->data << " ";
+   preorderTraversalR(p->left);
+   preorderTraversalR(p->right);
+}
+
+void BST::preorderTraversal(){
+   preorderTraversalR(root); 
+}
+
+void BST::postorderTraversalR(Node* p){
+   
+   if(p == nullptr){
+       return;
+   }
+   
+   postorderTraversalR(p->left);
+   postorderTraversalR(p->right);
+   cout<< p->data << " ";
+}
+
+void BST::postorderTraversal(){
+   postorderTraversalR(root); 
+}
+
+void BST::levelorderTraversal(){
+    if(root == nullptr){
+        return;
+    }
+    queue<Node*> q;
+    // level 0
+    q.push(root);
+    while(q.size() != 0){ // || !q.empty()
+        Node* n = q.front();
+        if(n->left != nullptr){
+            q.push(n-> left);
+        }
+        if(n->right != nullptr){
+            q.push(n->right);
+        }
+        cout<< n->data <<" ";
+        q.pop();
+    }
+}
+
+/*
+    class QNode{
+        Node* data;
+        QNode* next; 
+    };
+*/
