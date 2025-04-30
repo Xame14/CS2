@@ -17,6 +17,20 @@ int main()
     cout<<b.size()<<endl; //7
     cout<<b.height()<<endl; // 3
     
+    b.inorderTraversal();
+    
+    cout<<endl;
+    
+    b.preorderTraversal();
+    
+    cout<<endl;
+    
+    b.postorderTraversal();
+    
+    cout<<endl;
+    
+    b.levelorderTraversal();
+    
 
     return 0;
 }
