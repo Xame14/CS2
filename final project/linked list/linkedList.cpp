@@ -40,5 +40,25 @@ void linkedList::push(int value){ // will insert value to the front
 }
 
 int linkedList::pop(){
+     
+    if(head == nullptr){
+        return -1;
+    }
+    if(head->next == nullptr){
+        Node* temp = head;
+        int num = temp->data;
+        head = nullptr;
+        delete temp;
+        return num;
+    }
+    else{
+        Node* minpre = nullptr;         // smallest value previous
+        Node* minNode = head;           // smallest value node
+        Node* current = head->next;     // where the checker is
+        Node* currentpre = head         // checker's previous
+        
+        
+    }
     
+}    
 }
