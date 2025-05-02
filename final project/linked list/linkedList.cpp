@@ -1,3 +1,5 @@
+#include "linkedList.h"
+
 linkedList::linkedList(){
     
     head = nullptr;
@@ -7,7 +9,7 @@ linkedList::linkedList(){
 linkedList::~linkedList(){
     
     for(Node* i = head; i!= nullptr;){
-        Node* temp = i ->next;
+        Node* temp = i->next;
         delete i;
         i = temp;
     }
@@ -18,9 +20,12 @@ int linkedList::size(){
 }
 
 void linkedList::print(){
-    for(Node* i = head; i!= nullptr;){
+    
+    for(Node* i = head; i != nullptr;i = i->next){
         cout<< i->data<<", ";
+        
     }
+    cout<< endl;
     
 }
 
@@ -34,6 +39,7 @@ void linkedList::push(int value){ // will insert value to the front
     }
     else{
         temp->next = head;
+        
     }
     head = temp;
     count++;
@@ -55,10 +61,21 @@ int linkedList::pop(){
         Node* minpre = nullptr;         // smallest value previous
         Node* minNode = head;           // smallest value node
         Node* current = head->next;     // where the checker is
-        Node* currentpre = head         // checker's previous
+        Node* currentpre = head;         // checker's previous
         
+        while(current != nullptr){
+            if(current->data < minNode->data){
+                minNode = current;
+                minpre = currentpre;
+            }
+            current = current->next;
+            currentpre = currentpre->next;
+        }
+        int value = minNode->data;
+        minpre->next = minNode->next;
+        delete minNode;
+        return value;
         
     }
     
-}    
 }
