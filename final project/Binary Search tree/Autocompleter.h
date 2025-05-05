@@ -1,23 +1,29 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
 class Autocompleter{
     public:
     Autocompleter();
     ~Autocompleter();
     int size();
     int height();
-    void completion(string);
-    void insert(string):
+    void completion(string name);
+    void insert(string name);
     
     private:
-    Node* root
     class Node{
         public:
-        string data;
+        string name;
         Node* left;
         Node* right;
     };
-    void deleteNodes(Node* p)
+    Node* root;
+    void deleteNodes(Node* p);
     void insertR(Node* &p, string);
-    void height(Node* p);
-    void sizeR(Node* p);
+    int heightR(Node* p);
+    int sizeR(Node* p);
     string word;
 };
