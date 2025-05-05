@@ -15,7 +15,9 @@ class Autocompleter{
         Node* left;
         Node* right;
     };
+    void deleteNodes(Node* p)
     void insertR(Node* &p, string);
     void height(Node* p);
     void sizeR(Node* p);
+    string word;
 };
