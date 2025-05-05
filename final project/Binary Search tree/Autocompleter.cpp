@@ -1,60 +1,69 @@
 #include "Autocompleter.h"
+#include <queue>
 
-Autocompleter::Autocompleter
+Autocompleter::Autocompleter()
 {
     root=nullptr;
 }
-Autocompleter::~Autocompleter
+
+void Autocompleter::deleteNodes(Node* p)
+{
+    if(p == nullptr)
+        return ;
+    deleteNodes(p->left);
+    deleteNodes(p->right);
+    delete p;
+}
+
+Autocompleter::~Autocompleter()
 {
     deleteNodes(root);
 }
 
-Autocompleter::sizeR(Node* p)
+int Autocompleter::sizeR(Node* p)
 {
     if(p==nullptr)
-        return;
-    return size(node->left)+size(node->right);
+        return 0;
+    return sizeR(p->left)+sizeR(p->right)+1;
 }
-Autocompleter::size()
+
+int Autocompleter::size()
 {
     return sizeR(root);
-    
+
 }
-Autocompleter::heightR()
+int Autocompleter::heightR(Node* p)
 {
     if(p==nullptr)
         return -1;
     return 1+max(heightR(p->left),heightR(p->right));
 }
-Autocompleter::height()
+int Autocompleter::height()
 {
     return heightR(root);
-    
+
 }
 
-void Autocompleter::insert(string name)
+void Autocompleter::insert(string word)
 {
-    insertR(root,string name);
-    
+    insertR(root, word);
+
 }
-void Autocompleter::insertR(Node* &p,string name)//inserts the string value in the 
+
+void Autocompleter::insertR(Node* &p,string word)//inserts the string value in the
 {
-    if(p==nullptr)
-    {
-       Node* temp =new Node();
-       temp->data = name;
-       temp->left =nullptr;
-       temp->right = nullptr;
-       p=temp;
-       
-    }   
-    else if(p->data>name)
-    {
-        insertR(p->left,name);
+    if(p == nullptr){
+        Node* temp =new Node();
+        temp->name = word;
+        temp->left =nullptr;
+        temp->right = nullptr;
+        p = temp;
     }
-    else
-    {
-        insertR(p->right,name);
+    else if(p->name > word ){
+        insertR(p->left,word);
     }
- 
+    else{
+        insertR(p->right,word);
+    }
+
 }
