@@ -53,7 +53,7 @@ void Autocompleter::insert(string word)
 void Autocompleter::insertR(Node* &p,string word)//inserts the string value in the
 {
     if(p == nullptr){
-        Node* temp =new Node();
+        Node* temp = new Node();
         temp->name = word;
         temp->left =nullptr;
         temp->right = nullptr;
@@ -66,4 +66,9 @@ void Autocompleter::insertR(Node* &p,string word)//inserts the string value in t
         insertR(p->right,word);
     }
 
+}
+
+void Autocompleter::completion(string letter)
+{
+       
 }
