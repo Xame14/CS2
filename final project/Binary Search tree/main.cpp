@@ -29,7 +29,7 @@ int main(){
     cout<<"The current size is: "<< Name.size()<<endl;
     cout<<"The hight is currently: "<< Name.height()<<endl;
     
-    
+    Name.completion('b');
     
     
     return 0;
