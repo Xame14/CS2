@@ -10,7 +10,7 @@ class Autocompleter{
     ~Autocompleter();
     int size();
     int height();
-    void completion(string name);
+    void completion(char name);
     void insert(string name);
     
     private:
@@ -26,4 +26,5 @@ class Autocompleter{
     int heightR(Node* p);
     int sizeR(Node* p);
     string word;
+    void completionR(Node* p,char);
 };
