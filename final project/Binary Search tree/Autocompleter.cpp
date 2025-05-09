@@ -75,7 +75,7 @@ void Autocompleter::completionR(Node* p,char letter)
     string word = p->name;
     char first_letter = word[0];
     
-    if(letter >= 97)
+    if(letter >= 97)  // letter is lowercase make it capital
         letter = letter - 32;
     
     if(first_letter == letter){
