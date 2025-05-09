@@ -64,15 +64,15 @@ int linkedList::pop(){
         Node* currentpre = head;         // checker's previous
         
         while(current != nullptr){
-            if(current->data < minNode->data){
+            if(current->data < minNode->data){ // if currents value is less than minimus value make min == curent
                 minNode = current;
                 minpre = currentpre;
             }
             current = current->next;
             currentpre = currentpre->next;
         }
-        int value = minNode->data;
-        minpre->next = minNode->next;
+        int value = minNode->data; // get the number in minnode and set it to value as and int
+        minpre->next = minNode->next; // lnking minimums previouse to minimums next (skipping minNide)
         delete minNode;
         return value;
         
