@@ -1,12 +1,12 @@
 #include "Autocompleter.h"
 #include <queue>
 
-Autocompleter::Autocompleter()
+Autocompleter::Autocompleter() // constrycter
 {
     root=nullptr;
 }
 
-void Autocompleter::deleteNodes(Node* p)
+void Autocompleter::deleteNodes(Node* p) //recurvive for the deconstructer
 {
     if(p == nullptr)
         return ;
@@ -15,19 +15,19 @@ void Autocompleter::deleteNodes(Node* p)
     delete p;
 }
 
-Autocompleter::~Autocompleter()
+Autocompleter::~Autocompleter() //deconstructor
 {
     deleteNodes(root);
 }
 
-int Autocompleter::sizeR(Node* p)
+int Autocompleter::sizeR(Node* p) //recursive for size
 {
     if(p==nullptr)
         return 0;
     return sizeR(p->left)+sizeR(p->right)+1;
 }
 
-int Autocompleter::size()
+int Autocompleter::size() // size function
 {
     return sizeR(root);
 
@@ -74,10 +74,10 @@ void Autocompleter::completionR(Node* p,char letter)
         return;
     string word = p->name;
     char first_letter = word[0];
-    
+    /*
     if(letter >= 97)  // letter is lowercase make it capital
         letter = letter - 32;
-    
+    */
     if(first_letter == letter){
         cout<< p->name << " ";
         return completionR(p->right, letter);
