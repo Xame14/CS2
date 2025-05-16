@@ -1,12 +1,12 @@
 #include "linkedList.h"
 
-linkedList::linkedList(){
+linkedList::linkedList(){ //constucter
     
     head = nullptr;
     count = 0;
 }
 
-linkedList::~linkedList(){
+linkedList::~linkedList(){ // deconstructor
     
     for(Node* i = head; i!= nullptr;){
         Node* temp = i->next;
@@ -15,11 +15,11 @@ linkedList::~linkedList(){
     }
 }
 
-int linkedList::size(){
+int linkedList::size(){ //count
     return count;
 }
 
-void linkedList::print(){
+void linkedList::print(){ // print
     
     for(Node* i = head; i != nullptr;i = i->next){
         cout<< i->data<<", ";
